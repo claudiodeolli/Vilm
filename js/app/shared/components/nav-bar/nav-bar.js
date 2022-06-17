@@ -48,6 +48,7 @@ export default class NavBar extends window.HTMLElement{
             .nav-bar__search{
 
                 position: relative;
+                text-align: right;
                 display: flex;
                 align-items: center;
                 margin: 0 1rem;
@@ -55,6 +56,14 @@ export default class NavBar extends window.HTMLElement{
 
             .nav-bar__search__input{
 
+                width: 0px;
+                opacity: 0;
+                transition: width .5s, opacity .5s;
+                color: #FFFFFF;           
+
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
                 background: rgba(196, 196, 196, 0.4);
                 border-radius: .25rem;
                 border: 0;
@@ -68,6 +77,13 @@ export default class NavBar extends window.HTMLElement{
                 color: #FFFFFF;                
             }
 
+            .collapsed-input{
+
+                width: 181px;
+                opacity: 1;
+                transition: width .5s, opacity .5s;
+            }
+
             @media (min-width: 1279px)
             {
                 .nav-bar__logo{
@@ -78,6 +94,24 @@ export default class NavBar extends window.HTMLElement{
                     font-size: 48px;
                     color: #FFFFFF;
                     margin: 1rem 70px;
+                }
+
+                .nav-bar__search__input{
+
+                    font-size: 36px;
+                    padding-bottom: .5rem;
+                    border-radius: .5rem;
+                }
+
+                .nav-bar__search__icon{
+
+                    width: 35px;
+                    height: 35px;           
+                }
+
+                .collapsed-input{
+
+                    width: 475px;
                 }
             }
         `;
@@ -92,7 +126,7 @@ export default class NavBar extends window.HTMLElement{
         html.innerHTML = `
             <h2 class="nav-bar__logo">Vilm</h2>
             <div class="nav-bar__search">
-                <input id="search" class="nav-bar__input nav-bar__search__input" type="text">
+                <input id="search" type='text' class="nav-bar__search__input"> </input>
                 <svg id="searchButton" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-search nav-bar__search__icon" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
@@ -105,13 +139,9 @@ export default class NavBar extends window.HTMLElement{
     #toggleSearchInput(){
 
         const searchInput = this.#shadow.querySelector('#search');
-        const searchInputIsVisible = searchInput.style.width === "100%";
 
-        if (searchInputIsVisible) {
-            searchInput.style.width = "0";
-        } else {
-            searchInput.style.width = "100%";
-        }
+        searchInput.classList.toggle('collapsed-input');
+        searchInput.value = "";
     };
 };
 
