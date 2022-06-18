@@ -77,7 +77,7 @@ export default class NavBar extends window.HTMLElement{
                 color: #FFFFFF;                
             }
 
-            .collapsed-input{
+            .expanded-input{
 
                 width: 181px;
                 opacity: 1;
@@ -111,7 +111,7 @@ export default class NavBar extends window.HTMLElement{
                     height: 35px;           
                 }
 
-                .collapsed-input{
+                .expanded-input{
 
                     width: 350px;
                     opacity: 1;
@@ -140,7 +140,7 @@ export default class NavBar extends window.HTMLElement{
                     height: 1rem;           
                 }
 
-                .collapsed-input{
+                .expanded-input{
 
                     width: 300px;
                 }
@@ -171,7 +171,7 @@ export default class NavBar extends window.HTMLElement{
 
         const searchInput = this.#shadow.querySelector('#search');
 
-        searchInput.classList.toggle('collapsed-input');
+        searchInput.classList.toggle('expanded-input');
         searchInput.value = "";
     };
 };

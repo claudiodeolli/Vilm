@@ -8,6 +8,7 @@ export default class MediaListController{
 
     async createMediaList(request){
 
+        //tipar aqui
         const {results} = await getTrendingMedia(request);
 
         let mediaList = [];
