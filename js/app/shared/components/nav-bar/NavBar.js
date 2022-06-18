@@ -84,7 +84,7 @@ export default class NavBar extends window.HTMLElement{
                 transition: width .5s, opacity .5s;
             }
 
-            @media (min-width: 1279px)
+            @media (min-width: 768px)
             {
                 .nav-bar__logo{
 
@@ -98,6 +98,8 @@ export default class NavBar extends window.HTMLElement{
 
                 .nav-bar__search__input{
 
+                    width: 0px;
+                    opacity: 0;
                     font-size: 36px;
                     padding-bottom: .5rem;
                     border-radius: .5rem;
@@ -111,7 +113,36 @@ export default class NavBar extends window.HTMLElement{
 
                 .collapsed-input{
 
-                    width: 475px;
+                    width: 350px;
+                    opacity: 1;
+                    transition: width .5s, opacity .5s;
+                }
+            }
+
+            @media (min-width: 1200px)
+            {
+                .nav-bar__logo{
+
+                    font-size: 32px;
+                    margin: .5rem 70px;
+                }
+
+                .nav-bar__search__input{
+
+                    font-size: 1rem;
+                    border-radius: .25rem;
+                    width: 300px;
+                }
+
+                .nav-bar__search__icon{
+
+                    width: 1rem;
+                    height: 1rem;           
+                }
+
+                .collapsed-input{
+
+                    width: 300px;
                 }
             }
         `;

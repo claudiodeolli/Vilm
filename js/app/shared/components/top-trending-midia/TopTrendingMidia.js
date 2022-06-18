@@ -44,7 +44,12 @@ export default class TopTrendingMidia extends HTMLElement{
 
             .top-trending-midia__info{
 
-                margin: 1rem;
+                margin: 1.5rem 1rem;
+            }
+
+            .top-trending-midia__info__overview{
+
+                display: none;
             }
 
             .top-trending-midia__info__title{
@@ -72,7 +77,7 @@ export default class TopTrendingMidia extends HTMLElement{
                 height: 14px
             }
 
-            @media (min-width: 1279px){
+            @media (min-width: 768px){
 
                 .top-trending-midia{
 
@@ -85,6 +90,11 @@ export default class TopTrendingMidia extends HTMLElement{
                 .top-trending-midia__info{
 
                     margin: 5rem;
+                }
+
+                .top-trending-midia__info__overview{
+
+                    display: block;
                 }
 
                 .top-trending-midia__info__title{
@@ -139,7 +149,7 @@ export default class TopTrendingMidia extends HTMLElement{
 
             <div class="top-trending-midia__info">
                 <h1 class="top-trending-midia__info__title">${name}</h1>
-                <h3>${overview}</h3>
+                <h3 class="top-trending-midia__info__overview">${overview}</h3>
                 <div class="top-trending-midia__info__details">
                     <span class="top-trending-midia__info__details__date">${release_year}</span>
                     <div class="top-trending-midia__info__details__vote-average">
