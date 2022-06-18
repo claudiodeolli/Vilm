@@ -8,7 +8,7 @@ export default class TopTrendingMidiaController{
 
         const data = await getTrendingListForTheWeek();
         const {
-            name, 
+            title, 
             vote_average, 
             first_air_date, 
             backdrop_path,
@@ -17,7 +17,7 @@ export default class TopTrendingMidiaController{
         const release_year = ConvertDate.fullDateForYearOnly(first_air_date);        
 
         return {
-            name, 
+            title, 
             vote_average, 
             release_year,
             backdrop_path,

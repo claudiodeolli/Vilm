@@ -1,6 +1,5 @@
 export default class Midia{
 
-
     #overview; 
     #id;
     #backdrop_path;
@@ -76,7 +75,7 @@ export default class Midia{
         return this.#poster_path;
     };
 
-    get name(){
+    get title(){
 
         return this.#name;
     };

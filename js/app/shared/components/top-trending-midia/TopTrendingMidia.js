@@ -141,14 +141,14 @@ export default class TopTrendingMidia extends HTMLElement{
 
     async #html(){
 
-        const {name, release_year, vote_average, overview} = await this.#getTopTrendingMidiaDetails();
+        const {title, release_year, vote_average, overview} = await this.#getTopTrendingMidiaDetails();
 
         let html = document.createElement('div');
         html.classList.add('top-trending-midia');
         html.innerHTML = `
 
             <div class="top-trending-midia__info">
-                <h1 class="top-trending-midia__info__title">${name}</h1>
+                <h1 class="top-trending-midia__info__title">${title}</h1>
                 <h3 class="top-trending-midia__info__overview">${overview}</h3>
                 <div class="top-trending-midia__info__details">
                     <span class="top-trending-midia__info__details__date">${release_year}</span>
