@@ -84,4 +84,9 @@ export default class Midia{
 
         return this.#media_type;
     };
+
+    get id(){
+
+        return this.#id;
+    };
 }
