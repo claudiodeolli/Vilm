@@ -1,5 +1,5 @@
-import { onNavigate } from "../../../app.js";
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
+import { Routes } from "../../../routes.js";
 
 export default class MediaCard extends HTMLElement{
 
@@ -9,7 +9,7 @@ export default class MediaCard extends HTMLElement{
     constructor(){
         super();
         this.#render();
-        this.#onInit();
+        this.#route();
     };
 
     #render(){
@@ -19,11 +19,11 @@ export default class MediaCard extends HTMLElement{
         this.#html();
     };
 
-    #onInit(){
+    #route(){
 
-        //transferir para routes
+        const routes = new Routes({ '/details': '<details-page></details-page>' }) 
         this.#shadow.addEventListener("click", () => {
-            onNavigate('/details');
+            routes.onNavigate('/details');
             return false;
         });
     };
