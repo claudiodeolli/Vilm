@@ -4,8 +4,9 @@ export default class DetailsPage extends HTMLElement{
 
     constructor(){
         super();
-        this.#page = document.querySelector('details-page');
-    }
+    };
+
+    
 }
 
 customElements.define('details-page', DetailsPage)

@@ -1,5 +1,6 @@
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
 import { Routes } from "../../../routes.js";
+import LoadPage from "../../../services/LoadPage.js";
 
 export default class MediaCard extends HTMLElement{
 
@@ -21,44 +22,24 @@ export default class MediaCard extends HTMLElement{
 
     #route(){
 
-        const routes = new Routes({ '/details': '<details-page></details-page>' }) 
+        const routes = new Routes({ 
+            '/details': `<details-page></details-page>` 
+        });
+
         this.#shadow.addEventListener("click", () => {
             routes.onNavigate('/details');
             return false;
         });
     };
 
-    #style(){
+    async #style(){
 
-        let style = document.createElement('style');
-        style.textContent = `
+        const style = await LoadPage.get('js/app/shared/components/media-card/media-card.css');
+        const styleElement = document.createElement('style');
 
-            .media-card__cover{
+        styleElement.textContent = style;
 
-                background: red;
-                width: 6.25rem;
-                height: 8.76rem;
-                border-radius: .25rem;
-            }
-
-            .media-card__name{
-
-                font-size: .7rem;
-                font-weight: 700;
-                line-height: .8rem;
-                color: #B6B6B6;
-            }
-
-            .media-card__release-year{
-
-                font-weight: 400;
-                font-size: .7rem;
-                line-height: 6px;
-                color: #828282;
-            }
-        `;
-
-        this.#shadow.appendChild(style);
+        this.#shadow.appendChild(styleElement);
     };
 
     #html(){
