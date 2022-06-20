@@ -92,14 +92,4 @@ export default class Movie{
 
         return this.#vote_count;
     };
-
-    get media_type(){
-
-        return this.#media_type;
-    }
-
-    get id(){
-
-        return this.#id;
-    };
 }

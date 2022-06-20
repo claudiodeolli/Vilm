@@ -94,9 +94,4 @@ export default class Tv{
 
         return this.#media_type;
     };
-
-    get id(){
-
-        return this.#id;
-    }
 }

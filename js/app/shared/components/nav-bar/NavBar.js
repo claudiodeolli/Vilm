@@ -1,4 +1,4 @@
-export default class NavBar extends HTMLElement{
+export default class NavBar extends window.HTMLElement{
 
     #shadow;
 

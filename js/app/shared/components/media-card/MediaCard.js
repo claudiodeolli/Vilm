@@ -1,5 +1,4 @@
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
-import PageManager from "../../../pages/PageManager.js";
 
 export default class MediaCard extends HTMLElement{
 
@@ -14,20 +13,7 @@ export default class MediaCard extends HTMLElement{
 
         this.#shadow = this.attachShadow({mode : 'open'});
         this.#style();
-        this.#html();
-        this.#onInit();
-    };
-
-    #onInit(){
-
-        const pageManager = new PageManager();
-
-        this.#shadow.addEventListener("click", () => {
-            
-            const id = this.#shadow.host.getAttribute("data-id");
-            const mediaType = this.#shadow.host.getAttribute("data-mediaType")
-            pageManager.changeToDetailPage();
-        });
+        this.#html();      
     };
 
     #style(){
@@ -80,7 +66,7 @@ export default class MediaCard extends HTMLElement{
         `;
 
         this.#shadow.appendChild(html);
-    };
-};
+    }
+}
 
 customElements.define('media-card', MediaCard);
