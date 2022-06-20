@@ -3,6 +3,7 @@ import MediaList from "../models/MediaList.js";
 import Midia from "../models/Midia.js";
 import Movie from "../models/Movie.js";
 import Tv from "../models/Tv.js";
+import MediaFactory from "../services/MediaFactory.js";
 
 export default class MediaListController{
 
@@ -14,11 +15,7 @@ export default class MediaListController{
         let mediaList = [];
         results.forEach(item => {
 
-            if(item.media_type == "movie"){
-                mediaList.push(new Movie(item));
-            }else if(item.media_type == "tv"){
-                mediaList.push(new Tv(item));
-            }            
+            mediaList.push(MediaFactory.build(item));      
         });
 
         return new MediaList(mediaList);

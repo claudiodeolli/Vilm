@@ -64,7 +64,6 @@ export default class MediaList extends HTMLElement{
         let listTitle = this.#shadow.host.getAttribute("data-title");
         let {list} = await this.#loadList();
         let html = document.createElement('div');
-        console.log(list);
 
         html.classList.add('media-list');
 

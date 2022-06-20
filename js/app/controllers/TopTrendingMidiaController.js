@@ -1,6 +1,7 @@
 import { getTrendingListForTheWeek } from "../services/tmdb.js";
 import Midia from "../models/Midia.js";
 import ConvertDate from "../helpers/ConvertDate.js";
+import MediaFactory from "../services/MediaFactory.js";
 
 export default class TopTrendingMidiaController{
 
@@ -13,7 +14,7 @@ export default class TopTrendingMidiaController{
             first_air_date, 
             backdrop_path,
             overview,
-        } = new Midia(data.results[0]); 
+        } = MediaFactory.build(data.results[0]); 
         const release_year = ConvertDate.fullDateForYearOnly(first_air_date);        
 
         return {
