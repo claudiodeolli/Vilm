@@ -1,4 +1,5 @@
 import LoadPage from "../../services/LoadPage.js";
+import { getMediaById } from "../../services/tmdb.js";
 
 export default class DetailsPage extends HTMLElement{
 
@@ -12,9 +13,18 @@ export default class DetailsPage extends HTMLElement{
 
     #render(){
 
-        this.#shadow = this.attachShadow({mode: 'open'});
+        this.#shadow = this.attachShadow({mode: 'open'});        
         this.#style();
         this.#html();
+    };
+
+    async #getMediaDetails(){
+
+        const id = this.#shadow.host.getAttribute("data-id");
+        const mediaType = this.#shadow.host.getAttribute("data-mediaType");
+        const mediaDetails = await getMediaById(id, mediaType);
+
+        return mediaDetails;
     };
 
     async #style(){
@@ -27,11 +37,11 @@ export default class DetailsPage extends HTMLElement{
         this.#shadow.appendChild(styleElement);
     };
 
-    #html(){
+    async #html(){
 
         const html = document.createElement('div');
-        // const id = this.#shadow.host.getAttribute("data-id");
-        // const mediaType = this.#shadow.host.getAttribute("data-mediatype");
+        const mediaDetails = await this.#getMediaDetails();
+        console.log(mediaDetails);
 
         html.classList.add('details-page');
         html.innerHTML = `
