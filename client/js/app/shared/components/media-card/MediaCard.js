@@ -1,6 +1,7 @@
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
 import { Routes } from "../../../routes.js";
 import LoadPage from "../../../services/LoadPage.js";
+import DetailsPage from "../../../pages/details-page/DetailsPage.js";
 
 export default class MediaCard extends HTMLElement{
 
@@ -22,12 +23,19 @@ export default class MediaCard extends HTMLElement{
 
     #route(){
 
-        const routes = new Routes({ 
-            '/details': `<details-page></details-page>` 
-        });
-
         this.#shadow.addEventListener("click", () => {
+
+            const id = this.#shadow.host.getAttribute("data-id");
+            const mediaType = this.#shadow.host.getAttribute("data-mediatype");
+            const routes = new Routes({ 
+                '/details': `<details-page 
+                                data-id="${id}"
+                                data-mediaType="${mediaType}">
+                            </details-page>`
+            });
+
             routes.onNavigate('/details');
+
             return false;
         });
     };
@@ -44,11 +52,11 @@ export default class MediaCard extends HTMLElement{
 
     #html(){
 
-        let html = document.createElement('div');
-        let imgCoverPath = this.#shadow.host.getAttribute("data-poster");
-        let mediaName = this.#shadow.host.getAttribute("data-name");
-        let mediaReleaseYear = this.#shadow.host.getAttribute("data-year");
-        let imgCoverSrc = FormatUrlImage.get(500, imgCoverPath);
+        const html = document.createElement('div');
+        const imgCoverPath = this.#shadow.host.getAttribute("data-poster");
+        const mediaName = this.#shadow.host.getAttribute("data-name");
+        const mediaReleaseYear = this.#shadow.host.getAttribute("data-year");
+        const imgCoverSrc = FormatUrlImage.get(500, imgCoverPath);
 
         html.classList.add('media-card');
         html.innerHTML = `

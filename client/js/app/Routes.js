@@ -5,9 +5,8 @@ export class Routes{
 
     constructor(routes){
 
-        this.#routes = {routes}
+        this.#routes = routes;
         this.#template = document.querySelector('router-outlet');
-        console.log()
         this.#onInit();
     };
 
