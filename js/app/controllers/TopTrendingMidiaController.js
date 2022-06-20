@@ -18,7 +18,7 @@ export default class TopTrendingMidiaController{
         const release_year = ConvertDate.fullDateForYearOnly(first_air_date);        
 
         return {
-            title, 
+            title,
             vote_average, 
             release_year,
             backdrop_path,
