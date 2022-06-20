@@ -50,6 +50,11 @@ export default class Tv{
         Object.freeze(this);
     };
 
+    get id(){
+
+        return this.#id;
+    }
+
     get overview(){
 
         return this.#overview;

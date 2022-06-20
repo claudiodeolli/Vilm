@@ -53,6 +53,11 @@ export default class Movie{
         Object.freeze(this);
     };
 
+    get id(){
+
+        return this.#id;
+    }
+
     get backdrop_path(){
 
         return this.#backdrop_path;

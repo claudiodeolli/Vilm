@@ -1,19 +1,31 @@
+import { onNavigate } from "../../../app.js";
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
 
 export default class MediaCard extends HTMLElement{
 
     #shadow;
+    #routerOutlet;
 
     constructor(){
         super();
         this.#render();
+        this.#onInit();
     };
 
     #render(){
 
         this.#shadow = this.attachShadow({mode : 'open'});
         this.#style();
-        this.#html();      
+        this.#html();
+    };
+
+    #onInit(){
+
+        //transferir para routes
+        this.#shadow.addEventListener("click", () => {
+            onNavigate('/details');
+            return false;
+        });
     };
 
     #style(){
@@ -66,7 +78,7 @@ export default class MediaCard extends HTMLElement{
         `;
 
         this.#shadow.appendChild(html);
-    }
+    };
 }
 
 customElements.define('media-card', MediaCard);

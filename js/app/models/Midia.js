@@ -50,6 +50,11 @@ export default class Midia{
             Object.freeze(this);
     };
 
+    get id(){
+
+        return this.#id;
+    };
+
     get overview(){
 
         return this.#overview;

@@ -72,11 +72,13 @@ export default class MediaList extends HTMLElement{
             <h2 class="media-list__title">${listTitle}</h2>
             <div class="media-list__cards">
 
-                ${list.map(({poster_path, title, first_air_date}) => `    
+                ${list.map(({poster_path, title, first_air_date, id, media_type}) => `    
 
                     <media-card data-poster="${poster_path}" 
                                 data-name="${title}" 
-                                data-year="${ConvertDate.fullDateForYearOnly(first_air_date)}">
+                                data-year="${ConvertDate.fullDateForYearOnly(first_air_date)}"
+                                data-id="${id}"
+                                data-mediaType="${media_type}">
                     </media-card>
                 `).join('')}
             </div>
