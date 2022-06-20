@@ -1,3 +1,4 @@
+import { Routes } from "../../../routes.js";
 import LoadPage from "../../../services/LoadPage.js";
 
 export default class NavBar extends HTMLElement{
@@ -8,6 +9,7 @@ export default class NavBar extends HTMLElement{
         super();
         this.#render();
         this.#onInit();
+        this.#route();
     };
 
     #render(){
@@ -16,6 +18,23 @@ export default class NavBar extends HTMLElement{
 
         this.#style();
         this.#html();
+    };
+
+    #route(){
+
+        const home = this.#shadow.querySelector('.nav-bar__logo');
+        const searchInput = this.#shadow.querySelector('#search');
+        
+        home.addEventListener("click", () => {
+
+            const routes = new Routes({ 
+                '/': `<main-page></main-page>`
+            });
+
+            routes.onNavigate('/');
+
+            return false;
+        });
     };
 
     #onInit(){
