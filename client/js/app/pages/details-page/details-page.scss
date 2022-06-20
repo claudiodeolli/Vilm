@@ -1,0 +1,78 @@
+.details-page{
+
+    position: relative;
+
+    &__overlay{
+
+        &__color{
+
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 2, 2, 0.4);
+        }
+
+        &__cover{
+
+            width: 100%;
+        }
+    }
+
+    &__info{
+        
+        position: absolute;
+        top: 70%;
+        margin: 0 1.5rem;
+        &__card{
+
+            &__title{
+
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 17px;
+                line-height: 17px;
+
+                color: #EDEDED;
+            }
+            &__poster{
+    
+                width: 7rem;
+                height: 10rem;
+            }
+            &__rating{
+
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 11px;
+
+                color: #FFFFFF;
+
+                &__icon{
+
+                    height: 11px;
+                    width: 11px;
+                }
+            }
+        }
+        &__overview{
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-size: 14px;
+            line-height: 16px;
+
+            color: #FFFFFF;
+
+            margin: 1rem 0;
+    
+            &__title{
+                
+                font-weight: 700;
+                margin: .3rem 0;
+            }
+        }
+    }
+}
