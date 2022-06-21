@@ -26,9 +26,9 @@ export const getMediaById = async (id, mediaType) => {
     return response.json();
 };
 
-export const searchMedia = async (query) => {
+export const searchMedia = async (query, page) => {
 
-    const response = await fetch(`${API_BASE}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`);
+    const response = await fetch(`${API_BASE}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&&include_adult=false`);
     let {results, total_pages} = await response.json();
     
     let mediaList = results.map(item => {

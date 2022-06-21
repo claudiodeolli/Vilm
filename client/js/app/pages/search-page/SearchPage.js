@@ -8,17 +8,19 @@ export default class SearchPage extends HTMLElement{
 
     #shadow;
     #mediaListController;
+    #page;
 
     constructor(){
         super();
+        this.#page = 1;
         this.#render();
     };
 
-    #render(){
+    async #render(){
       
         this.#shadow = this.attachShadow({mode:'open'});
-        this.#style();
-        this.#html();        
+        await this.#style();
+        await this.#html();        
     };
 
     async #style(){
@@ -34,7 +36,9 @@ export default class SearchPage extends HTMLElement{
     async #html(){
 
         const html = document.createElement('div');
-        let {list} = await this.#loadList();
+        let {list, total_pages} = await this.#loadList();
+
+        await this.#clearItems();
 
         html.classList.add('search-page');
         html.innerHTML = `
@@ -51,18 +55,61 @@ export default class SearchPage extends HTMLElement{
                     </media-card>
                 `).join('')}
             </div>
+            <div class="search-page__pages">
+                <button class="search-page__pages__previous" type="button">Previous</button>
+                <button class="search-page__pages__previousNumber" type="button">${this.#page-1}</button>
+                <button class="search-page__pages__current" type="button">${this.#page}</button>
+                <button class="search-page__pages__nextNumber" type="button">${this.#page+1}</button>
+                <button class="search-page__pages__nextToNext" type="button">${this.#page+2}</button>
+                <button class="search-page__pages__last" type="button">${total_pages}</button>
+                <button class="search-page__pages__next" type="button">Next</button>
+            </div>
         `;
-
+        
         this.#shadow.appendChild(html);
+        await this.#changePage();
     };
 
     async #loadList(){
 
+        let mediaList;
         let query = window.location.search.split('=')[1];
-        let results = await searchMedia(query);
+        let results = await searchMedia(query, this.#page);
 
         this.#mediaListController = new MediaListController();
-        return await this.#mediaListController.createMediaList(results.mediaList);
+        mediaList = await this.#mediaListController.createMediaList(results.mediaList)
+        return {
+            'list' : mediaList.list, 
+            'total_pages' : results.total_pages
+        };
+    };
+
+    async #changePage(){
+
+        const navigationButtons = this.#shadow.querySelectorAll('.search-page__pages button');
+        navigationButtons.forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                switch (button.innerHTML){
+                    case "Previous":
+                        this.#page--;
+                        break;
+                    case "Next":
+                        this.#page++;
+                        break;
+                    default:
+                        this.#page = parseInt(button.innerHTML);
+                };
+                this.#html();
+            });
+        });
+    };
+
+    async #clearItems(){
+
+        const itemsParent = this.#shadow.querySelector('.search-page');
+        if(itemsParent) itemsParent.remove();
     };
 };
 customElements.define('search-page', SearchPage);
