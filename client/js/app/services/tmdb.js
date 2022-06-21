@@ -26,17 +26,16 @@ export const getMediaById = async (id, mediaType) => {
     return response.json();
 };
 
-export const searchMedia = async (query, page) => {
+export const searchMedia = async (mediaType, query, page) => {
 
-    const response = await fetch(`${API_BASE}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&&include_adult=false`);
-    let {results, total_pages} = await response.json();
-    
-    let mediaList = results.map(item => {
-        
-        if(item.media_type == "tv" || item.media_type == "movie"){
-            return item;
-        }
-    }).filter(item => item !== undefined);
+    var response;
+    if(mediaType == 'tv'){
 
-    return {mediaList, total_pages};
+        response = await fetch(`${API_BASE}search/tv?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`);
+    }else if(mediaType == 'movie'){
+
+        response = await fetch(`${API_BASE}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`);
+    };
+
+    return response.json();
 };

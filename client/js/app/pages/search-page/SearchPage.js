@@ -9,10 +9,12 @@ export default class SearchPage extends HTMLElement{
     #shadow;
     #mediaListController;
     #page;
+    #mediaType;
 
     constructor(){
         super();
         this.#page = 1;
+        this.#mediaType = "tv"; 
         this.#render();
     };
 
@@ -42,10 +44,14 @@ export default class SearchPage extends HTMLElement{
 
         html.classList.add('search-page');
         html.innerHTML = `
+            <div class="search-page__medias">
+                <button class="search-page__medias__tv" data-media="tv" type="button">Tv</button>
+                <button class="search-page__medias__movie" data-media="movie" type="button">Movie</button>
+            </div>
             <h2 class="search-page__title">Results</h2>
             <div class="search-page__results">
 
-                ${list.slice(0,18).map(({poster_path, title, first_air_date, id, media_type}) => `    
+                ${list.map(({poster_path, title, first_air_date, id, media_type}) => `    
 
                     <media-card data-poster="${poster_path}" 
                                 data-name="${title}" 
@@ -68,19 +74,20 @@ export default class SearchPage extends HTMLElement{
         
         this.#shadow.appendChild(html);
         await this.#changePage();
+        await this.#selectMediaQuery();
     };
 
     async #loadList(){
 
         let mediaList;
         let query = window.location.search.split('=')[1];
-        let results = await searchMedia(query, this.#page);
+        let response = await searchMedia(this.#mediaType, query, this.#page);
 
         this.#mediaListController = new MediaListController();
-        mediaList = await this.#mediaListController.createMediaList(results.mediaList)
+        mediaList = await this.#mediaListController.createMediaList(response.results)
         return {
             'list' : mediaList.list, 
-            'total_pages' : results.total_pages
+            'total_pages' : response.total_pages
         };
     };
 
@@ -106,10 +113,25 @@ export default class SearchPage extends HTMLElement{
         });
     };
 
+    async #selectMediaQuery(){
+
+        const navigationButtons = this.#shadow.querySelectorAll('.search-page__medias button');
+        navigationButtons.forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                button.classList.add('selected');
+                this.#mediaType = button.getAttribute("data-media");
+                this.#html();
+            });
+        });
+    };
+    
     async #clearItems(){
 
         const itemsParent = this.#shadow.querySelector('.search-page');
         if(itemsParent) itemsParent.remove();
     };
+
 };
 customElements.define('search-page', SearchPage);

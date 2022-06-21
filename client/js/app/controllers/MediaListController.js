@@ -1,6 +1,6 @@
 import { getTrendingMedia } from "../services/tmdb.js";
 import MediaList from "../models/MediaList.js";
-import Midia from "../models/Midia.js";
+import Midia from "../models/Media.js";
 import Movie from "../models/Movie.js";
 import Tv from "../models/Tv.js";
 import MediaFactory from "../services/MediaFactory.js";
@@ -8,8 +8,6 @@ import MediaFactory from "../services/MediaFactory.js";
 export default class MediaListController{
 
     async createMediaList(results){
-
-        //tipar aqui        
 
         let mediaList = [];
         results.forEach(item => {

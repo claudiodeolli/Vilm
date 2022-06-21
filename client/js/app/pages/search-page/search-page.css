@@ -6,6 +6,16 @@
           justify-content: center;
 }
 
+.search-page__medias {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.search-page__medias button {
+  width: 50%;
+}
+
 .search-page__title {
   font-family: 'Inter';
   font-style: normal;

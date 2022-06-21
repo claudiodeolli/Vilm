@@ -1,5 +1,4 @@
 import { getTrendingListForTheWeek } from "../services/tmdb.js";
-import Midia from "../models/Midia.js";
 import ConvertDate from "../helpers/ConvertDate.js";
 import MediaFactory from "../services/MediaFactory.js";
 

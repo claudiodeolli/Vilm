@@ -2,6 +2,13 @@
 
     display: grid;
     justify-content: center;
+
+    &__medias{
+        display: flex;
+        button{
+            width: 50%;
+        }
+    }
     &__title{
 
         font-family: 'Inter';
