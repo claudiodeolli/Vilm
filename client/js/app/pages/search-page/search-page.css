@@ -1,3 +1,7 @@
+.search-page {
+  display: grid;
+  justify-content: center;
+}
 .search-page__title {
   font-family: "Inter";
   font-style: normal;
@@ -5,10 +9,19 @@
   font-size: 14px;
   line-height: 17px;
   color: #FFFFFF;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 1rem;
 }
 .search-page__results {
   display: grid;
-  gap: 10px;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-template-columns: repeat(3, -webkit-min-content);
+  grid-template-columns: repeat(3, min-content);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-auto-flow: row dense;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }/*# sourceMappingURL=search-page.css.map */

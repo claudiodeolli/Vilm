@@ -35,14 +35,13 @@ export default class SearchPage extends HTMLElement{
 
         const html = document.createElement('div');
         let {list} = await this.#loadList();
-        console.log(list);
 
         html.classList.add('search-page');
         html.innerHTML = `
             <h2 class="search-page__title">Results</h2>
             <div class="search-page__results">
 
-                ${list.map(({poster_path, title, first_air_date, id, media_type}) => `    
+                ${list.slice(0,18).map(({poster_path, title, first_air_date, id, media_type}) => `    
 
                     <media-card data-poster="${poster_path}" 
                                 data-name="${title}" 

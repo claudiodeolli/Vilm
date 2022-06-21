@@ -1,5 +1,7 @@
 .search-page{
 
+    display: grid;
+    justify-content: center;
     &__title{
 
         font-family: 'Inter';
@@ -9,13 +11,18 @@
         line-height: 17px;
         
         color: #FFFFFF;
+
+        width: fit-content;
+        margin-top: 1rem;
     }
 
     &__results{
 
         display: grid;
-        gap: 10px;
-        grid-column-start: 1;
-        grid-column-end: 3;
+        grid-template-columns: repeat(3, min-content);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        grid-auto-flow: row dense;
+        width: fit-content;
     }
 }
