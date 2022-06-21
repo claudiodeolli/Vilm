@@ -28,5 +28,15 @@ export const getMediaById = async (id, mediaType) => {
 
 export const searchMedia = async (query) => {
 
-    const response = await fetch(`${API_BASE}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`);
+    const response = await fetch(`${API_BASE}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`);
+    let {results, total_pages} = await response.json();
+    
+    let mediaList = results.map(item => {
+        
+        if(item.media_type == "tv" || item.media_type == "movie"){
+            return item;
+        }
+    }).filter(item => item !== undefined);
+
+    return {mediaList, total_pages};
 };

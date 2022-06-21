@@ -1,5 +1,6 @@
 import { Routes } from "../../../routes.js";
 import LoadPage from "../../../services/LoadPage.js";
+import SearchPage from "../../../pages/search-page/SearchPage.js";
 
 export default class NavBar extends HTMLElement{
 
@@ -32,6 +33,18 @@ export default class NavBar extends HTMLElement{
             });
 
             routes.onNavigate('/');
+
+            return false;
+        });
+
+        searchInput.addEventListener("keypress", e => {
+
+            const query = {input: `/search?q=${e.target.value}`}
+            const routes = new Routes({
+                [query.input]: `<search-page></search-page>`
+            });
+
+            routes.onNavigate([query.input]);
 
             return false;
         });

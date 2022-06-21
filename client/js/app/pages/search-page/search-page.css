@@ -1,0 +1,14 @@
+.search-page__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+}
+.search-page__results {
+  display: grid;
+  gap: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}/*# sourceMappingURL=search-page.css.map */

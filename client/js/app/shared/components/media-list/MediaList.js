@@ -1,5 +1,6 @@
 import MediaListController from "../../../controllers/MediaListController.js";
 import ConvertDate from "../../../helpers/ConvertDate.js";
+import { getTrendingMedia } from "../../../services/tmdb.js";
 import MediaCard from "../media-card/MediaCard.js";
 
 export default class MediaList extends HTMLElement{
@@ -23,9 +24,10 @@ export default class MediaList extends HTMLElement{
     async #loadList(){
 
         let request = this.#shadow.host.getAttribute("data-search");
+        const {results} = await getTrendingMedia(request);
         
         this.#mediaListController = new MediaListController();
-        return await this.#mediaListController.createMediaList(request);
+        return await this.#mediaListController.createMediaList(results);
     };
 
     #style(){

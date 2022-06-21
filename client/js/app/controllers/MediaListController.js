@@ -7,10 +7,9 @@ import MediaFactory from "../services/MediaFactory.js";
 
 export default class MediaListController{
 
-    async createMediaList(request){
+    async createMediaList(results){
 
-        //tipar aqui
-        const {results} = await getTrendingMedia(request);
+        //tipar aqui        
 
         let mediaList = [];
         results.forEach(item => {
