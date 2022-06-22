@@ -85,6 +85,7 @@ export default class SearchPage extends HTMLElement{
 
         this.#mediaListController = new MediaListController();
         mediaList = await this.#mediaListController.createMediaList(response.results)
+        console.log(mediaList);
         return {
             'list' : mediaList.list, 
             'total_pages' : response.total_pages
@@ -122,6 +123,7 @@ export default class SearchPage extends HTMLElement{
 
                 button.classList.add('selected');
                 this.#mediaType = button.getAttribute("data-media");
+                this.#page = 1;
                 this.#html();
             });
         });
