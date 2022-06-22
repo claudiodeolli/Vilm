@@ -1,3 +1,6 @@
+import MainPage from "./pages/main-page/main-page.js";
+import DetailsPage from "./pages/details-page/DetailsPage.js";
+
 export default class Routes{
 
     #routes;
@@ -14,7 +17,7 @@ export default class Routes{
 
     #onInit(){
 
-        window.onpopstate = () => {            
+        window.onpopstate = () => { 
             let pathName = window.location.pathname + window.location.search;
             this.onNavigate(pathName);
         };
@@ -32,5 +35,7 @@ export default class Routes{
             window.location.origin + pathName
         );
         this.#template.innerHTML = this.#routes[pathName];
+        console.log(this.#template.innerHTML);
+        console.log(this.#routes);
     };
 }

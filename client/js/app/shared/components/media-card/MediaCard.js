@@ -28,14 +28,15 @@ export default class MediaCard extends HTMLElement{
             const routes = new Routes();
             const id = this.#shadow.host.getAttribute("data-id");
             const mediaType = this.#shadow.host.getAttribute("data-mediatype");
+            const query = {route: `/details?q=${id}`}
             
             routes.addRoute({ 
-                '/details': `<details-page 
+                [query.route]: `<details-page 
                                 data-id="${id}"
                                 data-mediaType="${mediaType}">
                             </details-page>`
             });
-            routes.onNavigate('/details');
+            routes.onNavigate([query.route]);
 
             return false;
         });

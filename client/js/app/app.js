@@ -1,6 +1,6 @@
-import MainPage from "./pages/main-page/main-page.js";
+import Routes from "./routes.js";
 
-const app = document.querySelector('router-outlet');
-const routes = { '/': '<main-page></main-page>' };
+const routes = new Routes();
+const pathName = window.location.pathname + window.location.search;
 
-app.innerHTML = routes[window.location.pathname];
+routes.onNavigate(pathName);
