@@ -85,7 +85,7 @@ export default class SearchPage extends HTMLElement{
 
         this.#mediaListController = new MediaListController();
         mediaList = await this.#mediaListController.createMediaList(response.results)
-        console.log(mediaList);
+
         return {
             'list' : mediaList.list, 
             'total_pages' : response.total_pages
