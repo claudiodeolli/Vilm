@@ -26,11 +26,11 @@
     &__results{
 
         display: grid;
-        grid-template-columns: repeat(3, min-content);
+        grid-template-columns: repeat(2, min-content);
         grid-column-gap: 10px;
         grid-row-gap: 10px;
         grid-auto-flow: row dense;
-        width: fit-content;
+        justify-content: center;
     }
 
     &__pages{

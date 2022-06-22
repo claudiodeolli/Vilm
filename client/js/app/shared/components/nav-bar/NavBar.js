@@ -37,7 +37,7 @@ export default class NavBar extends HTMLElement{
             return false;
         });
 
-        searchInput.addEventListener("keypress", e => {
+        searchInput.addEventListener("input", e => {
 
             const query = {input: `/search?q=${e.target.value}`}
             const routes = new Routes({
