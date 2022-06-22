@@ -32,6 +32,8 @@ export default class NavBar extends HTMLElement{
                 '/': `<main-page></main-page>`
             });
 
+            searchInput.classList.remove('expanded-input');
+            searchInput.value = "";
             routes.onNavigate('/');
 
             return false;
@@ -39,12 +41,15 @@ export default class NavBar extends HTMLElement{
 
         searchInput.addEventListener("input", e => {
 
-            const query = {input: `/search?q=${e.target.value}`}
-            const routes = new Routes({
-                [query.input]: `<search-page></search-page>`
-            });
-
-            routes.onNavigate([query.input]);
+            var inputValue = e.target.value.replace(/\s/g, "");
+            if(inputValue){
+                const query = {input: `/search?q=${inputValue}`}
+                const routes = new Routes({
+                    [query.input]: `<search-page></search-page>`
+                });
+    
+                routes.onNavigate([query.input]);
+            };
 
             return false;
         });
