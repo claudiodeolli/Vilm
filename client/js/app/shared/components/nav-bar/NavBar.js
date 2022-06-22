@@ -39,20 +39,32 @@ export default class NavBar extends HTMLElement{
             return false;
         });
 
-        searchInput.addEventListener("input", e => {
+        searchInput.addEventListener("input", async(e) => {
 
             var inputValue = e.target.value.replace(/\s/g, "");
             if(inputValue){
-                const query = {input: `/search?q=${inputValue}`}
-                const routes = new Routes({
-                    [query.input]: `<search-page></search-page>`
-                });
-    
-                routes.onNavigate([query.input]);
+                await this.#createRoute(inputValue);
+                console.log('oi 222');
             };
+
+            //let searchElement = document.querySelector('search-page').shadowRoot.querySelector('.search-page__medias');
 
             return false;
         });
+    };
+
+    async #createRoute(inputValue){
+
+        const query = {input: `/search?q=${inputValue}`}
+        const routes = new Routes({
+            [query.input]: `<search-page></search-page>`
+        });
+
+        setTimeout(() => {
+            console.log('oi 111');
+        },2000)
+
+        routes.onNavigate([query.input]);
     };
 
     #onInit(){
