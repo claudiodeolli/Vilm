@@ -62,18 +62,20 @@ export default class SearchPage extends HTMLElement{
                 `).join('')}
             </div>
             <div class="search-page__pages">
-                <button class="search-page__pages__previous" type="button">Previous</button>
-                <button class="search-page__pages__previousNumber" type="button">${this.#page-1}</button>
-                <button class="search-page__pages__current" type="button">${this.#page}</button>
-                <button class="search-page__pages__nextNumber" type="button">${this.#page+1}</button>
-                <button class="search-page__pages__nextToNext" type="button">${this.#page+2}</button>
-                <button class="search-page__pages__last" type="button">${total_pages}</button>
-                <button class="search-page__pages__next" type="button">Next</button>
+                <button class="search-page__pages__button previous" type="button">Previous</button>
+                <button class="search-page__pages__button first" type="button">First</button>
+                <button class="search-page__pages__button beforeCurrent" type="button">${this.#page-1}</button>
+                <button class="search-page__pages__button current" type="button">${this.#page}</button>
+                <button class="search-page__pages__button afterCurrent" type="button">${this.#page+1}</button>
+                <button class="search-page__pages__button nextOfAfterCurrent" type="button">${this.#page+2}</button>
+                <button class="search-page__pages__button total" type="button">${total_pages}</button>
+                <button class="search-page__pages__button next" type="button">Next</button>
             </div>
         `;
         
         this.#shadow.appendChild(html);
         await this.#changePage();
+        this.#managePaginationButtons();
         await this.#selectMediaQuery();
     };
 
@@ -103,12 +105,16 @@ export default class SearchPage extends HTMLElement{
                     case "Previous":
                         this.#page--;
                         break;
+                    case "First":
+                        this.#page = 1;
+                        break;
                     case "Next":
                         this.#page++;
                         break;
                     default:
                         this.#page = parseInt(button.innerHTML);
                 };
+
                 this.#html();
             });
         });
@@ -133,6 +139,47 @@ export default class SearchPage extends HTMLElement{
 
         const itemsParent = this.#shadow.querySelector('.search-page');
         if(itemsParent) itemsParent.remove();
+    };
+
+    #managePaginationButtons(){
+
+        const paginationButtons = {
+            'previous': this.#shadow.querySelector('.previous'),
+            'first': this.#shadow.querySelector('.first'),
+            'beforeCurrent': this.#shadow.querySelector('.beforeCurrent'),
+            'current': this.#shadow.querySelector('.current'),
+            'afterCurrent': this.#shadow.querySelector('.afterCurrent'),
+            'nextOfAfterCurrent': this.#shadow.querySelector('.nextOfAfterCurrent'),
+            'total': this.#shadow.querySelector('.total'),
+            'next': this.#shadow.querySelector('.next'),
+        };
+        const itsOnTheFirstPage = paginationButtons.current.innerHTML == 1;
+        const itsOnTheLastPage = paginationButtons.current.innerHTML == paginationButtons.total.innerHTML;
+        const itsOnThePenultimatePage = paginationButtons.afterCurrent.innerHTML == paginationButtons.total.innerHTML;
+        const isOnTheAntepenultimatePage = paginationButtons.total.innerHTML == paginationButtons.nextOfAfterCurrent.innerHTML;
+
+        if(itsOnTheFirstPage){
+
+            paginationButtons.first.disabled = true;
+            paginationButtons.previous.disabled = true;
+            paginationButtons.beforeCurrent.remove();
+        };
+        if(itsOnTheLastPage){
+
+            paginationButtons.next.disabled = true;
+            paginationButtons.total.remove();
+            paginationButtons.afterCurrent.remove();
+            paginationButtons.nextOfAfterCurrent.remove();
+        };
+        if(itsOnThePenultimatePage){
+
+            paginationButtons.afterCurrent.remove();
+            paginationButtons.nextOfAfterCurrent.remove();
+        };
+        if(isOnTheAntepenultimatePage){
+
+            paginationButtons.total.remove();
+        };
     };
 
 };
