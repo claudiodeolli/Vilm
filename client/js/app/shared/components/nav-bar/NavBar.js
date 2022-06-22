@@ -1,6 +1,6 @@
-import { Routes } from "../../../routes.js";
 import LoadPage from "../../../services/LoadPage.js";
 import SearchPage from "../../../pages/search-page/SearchPage.js";
+import Routes from "../../../Routes.js";
 
 export default class NavBar extends HTMLElement{
 
@@ -23,14 +23,11 @@ export default class NavBar extends HTMLElement{
 
     #route(){
 
+        const routes = new Routes();
         const home = this.#shadow.querySelector('.nav-bar__logo');
-        const searchInput = this.#shadow.querySelector('#search');
+        const searchInput = this.#shadow.querySelector('#search');        
         
         home.addEventListener("click", () => {
-
-            const routes = new Routes({ 
-                '/': `<main-page></main-page>`
-            });
 
             searchInput.classList.remove('expanded-input');
             searchInput.value = "";
@@ -44,10 +41,10 @@ export default class NavBar extends HTMLElement{
             var inputValue = e.target.value.replace(/\s/g, "");
             if(inputValue){
                 const query = {input: `/search?q=${inputValue}`}
-                const routes = new Routes({
+
+                routes.addRoute({
                     [query.input]: `<search-page></search-page>`
                 });
-    
                 routes.onNavigate([query.input]);
             };
 

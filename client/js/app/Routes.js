@@ -1,20 +1,28 @@
-export class Routes{
+export default class Routes{
 
     #routes;
     #template;
 
-    constructor(routes){
+    constructor(){
 
-        this.#routes = routes;
+        this.#routes = {
+            '/': `<main-page></main-page>`,            
+        };
         this.#template = document.querySelector('router-outlet');
         this.#onInit();
     };
 
     #onInit(){
 
-        window.onpopstate = () => {
-            this.#template.innerHTML = this.#routes[window.location.pathname];
+        window.onpopstate = () => {            
+            let pathName = window.location.pathname + window.location.search;
+            this.onNavigate(pathName);
         };
+    };
+
+    addRoute(route){
+
+        Object.assign(this.#routes, route);
     };
 
     onNavigate(pathName){

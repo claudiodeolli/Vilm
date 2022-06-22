@@ -1,5 +1,5 @@
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
-import { Routes } from "../../../routes.js";
+import Routes from "../../../routes.js";
 import LoadPage from "../../../services/LoadPage.js";
 import DetailsPage from "../../../pages/details-page/DetailsPage.js";
 
@@ -25,15 +25,16 @@ export default class MediaCard extends HTMLElement{
 
         this.#shadow.addEventListener("click", () => {
 
+            const routes = new Routes();
             const id = this.#shadow.host.getAttribute("data-id");
             const mediaType = this.#shadow.host.getAttribute("data-mediatype");
-            const routes = new Routes({ 
+            
+            routes.addRoute({ 
                 '/details': `<details-page 
                                 data-id="${id}"
                                 data-mediaType="${mediaType}">
                             </details-page>`
             });
-
             routes.onNavigate('/details');
 
             return false;
