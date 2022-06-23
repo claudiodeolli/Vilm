@@ -1,4 +1,4 @@
-import TopTrendingMidia from '../../shared/components/top-trending-midia/TopTrendingMidia.js';
+import TopTrendingMidia from '../../shared/components/top-trending-media/TopTrendingMedia.js';
 import MediaList from '../../shared/components/media-list/MediaList.js';
 
 export default class MainPage extends HTMLElement{

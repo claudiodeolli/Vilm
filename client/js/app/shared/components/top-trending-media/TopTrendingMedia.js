@@ -56,7 +56,7 @@ export default class TopTrendingMidia extends HTMLElement{
 
     async #style(){
 
-        const style = await LoadPage.get('js/app/shared/components/top-trending-midia/top-trending-midia.css');
+        const style = await LoadPage.get('js/app/shared/components/top-trending-media/top-trending-media.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;
