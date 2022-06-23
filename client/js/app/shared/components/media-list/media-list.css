@@ -1,27 +1,21 @@
 .media-list {
   margin: 0 auto;
   width: 90vw;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 700;
 }
-
 .media-list__title {
+  margin-top: 2rem;
   font-size: 1.1rem;
   color: #A2ACA6;
 }
-
 .media-list__cards {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: (1fr)[auto];
-      grid-template-rows: repeat(auto, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
   grid-gap: 4vw;
   width: 100%;
 }
-
 .media-list__cards::-webkit-scrollbar {
   display: none;
-}
-/*# sourceMappingURL=media-list.css.map */
+}/*# sourceMappingURL=media-list.css.map */

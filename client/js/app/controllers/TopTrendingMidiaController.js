@@ -13,6 +13,8 @@ export default class TopTrendingMidiaController{
             first_air_date, 
             backdrop_path,
             overview,
+            media_type,
+            id
         } = MediaFactory.build(data.results[0]); 
         const release_year = ConvertDate.fullDateForYearOnly(first_air_date);        
 
@@ -21,7 +23,9 @@ export default class TopTrendingMidiaController{
             vote_average, 
             release_year,
             backdrop_path,
-            overview
+            overview,
+            media_type,
+            id
         };
     };
 }

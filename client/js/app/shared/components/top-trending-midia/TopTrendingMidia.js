@@ -1,15 +1,31 @@
 import TopTrendingMidiaController from "../../../controllers/TopTrendingMidiaController.js";
 import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
+import Routes from "../../../routes.js";
+import LoadPage from "../../../services/LoadPage.js";
 
 export default class TopTrendingMidia extends HTMLElement{
 
     #shadow;
+    #data;
     #topTrendingMidiaController;
 
     constructor(){
         super();
-        this.#render();        
+        this.#onInit();
     }
+
+    async #onInit(){
+
+        this.#data = await this.#getTopTrendingMidiaData();
+        this.#render();      
+        this.#route();  
+    };
+
+    async #getTopTrendingMidiaData(){
+
+        this.#topTrendingMidiaController = new TopTrendingMidiaController();
+        return this.#topTrendingMidiaController.getTopTrendingMidiaDetails();
+    };
 
     #render(){
 
@@ -18,134 +34,49 @@ export default class TopTrendingMidia extends HTMLElement{
         this.#html();
     };
 
+    #route(){
+
+        this.#shadow.addEventListener("click", () => {
+
+            const routes = new Routes();
+            const { id, media_type } = this.#data;
+            const query = {route: `/details?q=${id}`}
+            
+            routes.addRoute({ 
+                [query.route]: `<details-page 
+                                data-id="${id}"
+                                data-mediaType="${media_type}">
+                            </details-page>`
+            });
+            routes.onNavigate([query.route]);
+
+            return false;
+        });
+    };
+
     async #style(){
 
-        const {backdrop_path} = await this.#getTopTrendingMidiaDetails()
-        let backgroundImg = FormatUrlImage.get(500, backdrop_path);
+        const style = await LoadPage.get('js/app/shared/components/top-trending-midia/top-trending-midia.css');
+        const styleElement = document.createElement('style');
 
-        let style = document.createElement('style');
-        style.textContent = `
+        styleElement.textContent = style;
 
-            .top-trending-midia{
-
-                overflow: hidden;
-                width: 100%;
-                height: 281px;
-                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImg});
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-blend-mode: multiply;
-
-                font-family: 'Inter';
-                font-style: normal;
-                color: #FFFFFF;
-            }
-
-            .top-trending-midia__info{
-
-                margin: 1.5rem 1rem;
-            }
-
-            .top-trending-midia__info__overview{
-
-                display: none;
-            }
-
-            .top-trending-midia__info__title{
-                
-                margin: 0;
-                font-weight: 700;
-                font-size: 1.5rem;
-            }
-
-            .top-trending-midia__info__details{
-
-                display: flex;
-                align-items: center;
-                margin: 1rem 0;
-            }
-
-            .top-trending-midia__info__details__vote-average{
-
-                margin: 0 1rem;
-            }
-
-            .top-trending-midia__info__details__vote-average svg{
-                
-                width: 14px;
-                height: 14px
-            }
-
-            @media (min-width: 768px){
-
-                .top-trending-midia{
-
-                    height: 50.5rem;
-                    display: flex;
-                    align-items: end;
-                    font-family: 'Roboto';
-                }
-
-                .top-trending-midia__info{
-
-                    margin: 5rem;
-                }
-
-                .top-trending-midia__info__overview{
-
-                    display: block;
-                }
-
-                .top-trending-midia__info__title{
-                    
-                    font-weight: 700;
-                    font-size: 64px;
-                }
-                
-                .top-trending-midia__info h3{
-
-                    width: 50%;
-                    font-weight: 400;
-                    font-size: 28px;
-                    line-height: 33px;
-                    margin: 1rem 0;
-                }
-
-                .top-trending-midia__info__details{
-
-                    margin: 2rem 0;
-                }
-
-                .top-trending-midia__info__details__vote-average svg{
-
-                    width: 40px;
-                    height: 40px;
-                }
-
-                .top-trending-midia__info__details__vote-average span{
-
-                    font-size: 40px;
-                    margin: 0 1rem;
-                }
-
-                .top-trending-midia__info__details__date{
-
-                    display: none;
-                }
-            }
-        `;
-
-        this.#shadow.appendChild(style);
+        this.#shadow.appendChild(styleElement);
     };
 
     async #html(){
 
-        const {title, release_year, vote_average, overview} = await this.#getTopTrendingMidiaDetails();
+        const {title, release_year, vote_average, overview, backdrop_path} = this.#data;
+        let backgroundImg = FormatUrlImage.get(500, backdrop_path);
 
         let html = document.createElement('div');
         html.classList.add('top-trending-midia');
         html.innerHTML = `
+
+            <div class="top-trending-midia__overlay">
+                <div class="top-trending-midia__overlay__color"></div>
+                <img src="${backgroundImg}" class="top-trending-midia__overlay__cover" alt="Media Cover">
+            </div>
 
             <div class="top-trending-midia__info">
                 <h1 class="top-trending-midia__info__title">${title}</h1>
@@ -163,12 +94,6 @@ export default class TopTrendingMidia extends HTMLElement{
         `;
 
         this.#shadow.appendChild(html);
-    };
-
-    async #getTopTrendingMidiaDetails(){
-
-        this.#topTrendingMidiaController = new TopTrendingMidiaController();
-        return this.#topTrendingMidiaController.getTopTrendingMidiaDetails();
     };
 }
 
