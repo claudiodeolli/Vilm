@@ -4,21 +4,28 @@
   width: fit-content;
 }
 
-.media-card__cover {
-  background: red;
-  width: 8rem;
-  height: 12rem;
-  border-radius: 0.25rem;
+.media-card {
+  width: 10rem;
 }
+
+.media-card__cover {
+  width: inherit;
+  height: 15rem;
+  background: red;
+  border-radius: .25rem;
+}
+
 .media-card__name {
-  font-size: 0.7rem;
+  font-size: .7rem;
   font-weight: 700;
-  line-height: 0.8rem;
+  line-height: .8rem;
   color: #B6B6B6;
 }
+
 .media-card__release-year {
   font-weight: 400;
-  font-size: 0.7rem;
+  font-size: .7rem;
   line-height: 6px;
   color: #828282;
-}/*# sourceMappingURL=media-card.css.map */
+}
+/*# sourceMappingURL=media-card.css.map */

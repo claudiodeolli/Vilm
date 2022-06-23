@@ -35,7 +35,5 @@ export default class Routes{
             window.location.origin + pathName
         );
         this.#template.innerHTML = this.#routes[pathName];
-        console.log(this.#template.innerHTML);
-        console.log(this.#routes);
     };
 }

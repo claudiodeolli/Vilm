@@ -1,0 +1,32 @@
+.media-list {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: 'Inter';
+  font-weight: 700;
+}
+
+.media-list__title {
+  font-size: 1.1rem;
+  color: #A2ACA6;
+}
+
+.media-list__cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[auto];
+      grid-template-rows: repeat(auto, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.media-list__cards::-webkit-scrollbar {
+  display: none;
+}
+/*# sourceMappingURL=media-list.css.map */

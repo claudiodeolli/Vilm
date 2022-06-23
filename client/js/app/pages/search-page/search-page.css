@@ -1,39 +1,59 @@
 .search-page {
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .search-page__medias {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .search-page__medias button {
   width: 50%;
 }
+
 .search-page__title {
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 1.1rem;
   line-height: 17px;
-  color: #FFFFFF;
+  color: #A2ACA6;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin-top: 1rem;
 }
+
 .search-page__results {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(2, -webkit-min-content);
-  grid-template-columns: repeat(2, min-content);
+  -ms-grid-columns: (min-content)[2];
+      grid-template-columns: repeat(2, -webkit-min-content);
+      grid-template-columns: repeat(2, min-content);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   grid-auto-flow: row dense;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .search-page__pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 1rem 0;
 }
+
 .search-page__pages button {
-  margin: 0 0.2rem;
-}/*# sourceMappingURL=search-page.css.map */
+  margin: 0 .2rem;
+}
+/*# sourceMappingURL=search-page.css.map */

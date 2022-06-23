@@ -1,5 +1,6 @@
 import MediaListController from "../../../controllers/MediaListController.js";
 import ConvertDate from "../../../helpers/ConvertDate.js";
+import LoadPage from "../../../services/LoadPage.js";
 import { getTrendingMedia } from "../../../services/tmdb.js";
 import MediaCard from "../media-card/MediaCard.js";
 
@@ -30,35 +31,14 @@ export default class MediaList extends HTMLElement{
         return await this.#mediaListController.createMediaList(results);
     };
 
-    #style(){
+    async #style(){
 
-        let style = document.createElement('style');
-        style.textContent = `
+        const style = await LoadPage.get('js/app/shared/components/media-list/media-list.css');
+        const styleElement = document.createElement('style');
 
-            .media-list{
+        styleElement.textContent = style;
 
-                margin: 1rem;
-
-                font-family: 'Inter';
-                font-weight: 700;
-            }
-
-            .media-list__title{
-
-                font-size: 14px;
-                color: #A2ACA6;
-            }
-
-            .media-list__cards{
-
-                display: grid;
-                gap: 22px;
-                grid-auto-flow: column;
-                overflow: scroll;
-            }
-        `;
-
-        this.#shadow.appendChild(style);
+        this.#shadow.appendChild(styleElement);
     };
 
     async #html(){
@@ -74,7 +54,7 @@ export default class MediaList extends HTMLElement{
             <h2 class="media-list__title">${listTitle}</h2>
             <div class="media-list__cards">
 
-                ${list.map(({poster_path, title, first_air_date, id, media_type}) => `    
+                ${list.slice(0, 4).map(({poster_path, title, first_air_date, id, media_type}) => `    
 
                     <media-card data-poster="${poster_path}" 
                                 data-name="${title}" 
