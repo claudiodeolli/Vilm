@@ -1,4 +1,4 @@
-.details-page {
+.details-page__overlay {
   position: relative;
 }
 
@@ -14,8 +14,8 @@
 }
 
 .details-page__info {
-  position: absolute;
-  top: 70%;
+  -webkit-transform: translate(0, -30%);
+          transform: translate(0, -30%);
   margin: 0 1.5rem;
 }
 

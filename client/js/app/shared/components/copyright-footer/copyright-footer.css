@@ -1,0 +1,29 @@
+.copyright {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 15vw 0;
+  color: #FFFF;
+  font-family: 'Inter';
+  font-style: normal;
+}
+
+.copyright__title {
+  font-size: 8vw;
+}
+
+.copyright__title__logo {
+  font-weight: 700;
+}
+
+.copyright__title__year {
+  font-weight: 300;
+}
+
+.copyright__api {
+  font-size: 5vw;
+}
+
+.copyright__api__name {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=copyright-footer.css.map */

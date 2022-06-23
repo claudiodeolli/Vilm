@@ -1,9 +1,8 @@
 .details-page{
 
-    position: relative;
-
     &__overlay{
 
+        position: relative;
         &__color{
 
             position: absolute;
@@ -20,8 +19,7 @@
 
     &__info{
         
-        position: absolute;
-        top: 70%;
+        transform: translate(0, -30%);
         margin: 0 1.5rem;
         &__card{
 
