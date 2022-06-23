@@ -64,8 +64,10 @@ export default class MediaCard extends HTMLElement{
         html.innerHTML = `
         
             <img src="${imgCoverSrc}" class="media-card__cover" alt="Media Cover">
-            <h2 class="media-card__name">${mediaName}</h2>
-            <h3 class="media-card__release-year">${mediaReleaseYear}</h3>
+            <div class="media-card__text">
+                <h2 class="media-card__text__name">${mediaName}</h2>
+                <h3 class="media-card__text__release-year">${mediaReleaseYear}</h3>
+            </di>
         `;
 
         this.#shadow.appendChild(html);

@@ -1,33 +1,37 @@
-:host{
-
-    width: fit-content;
-}
-
 .media-card{
 
-    width: 10rem;
-
+    width: 100%;
+    height: 80vw;
     &__cover{
 
         width: inherit;
-        height: 15rem;
         background: red;
-        border-radius: .25rem;
+        border-radius: 1vw;
     }
 
-    &__name{
+    &__text{
 
-        font-size: .7rem;
-        font-weight: 700;
-        line-height: .8rem;
-        color: #B6B6B6;
-    }
+        height: 14vw;
+        align-items: end;
+        display: grid;
 
-    &__release-year{
+        h2, h3{
 
-        font-weight: 400;
-        font-size: .7rem;
-        line-height: 6px;
-        color: #828282;
+            margin: 0;
+        }
+
+        &__name{
+
+            font-size: 3.5vw;
+            font-weight: 700;
+            color: #B6B6B6;
+        }
+    
+        &__release-year{
+
+            font-weight: 400;
+            font-size: 3.3vw;
+            color: #828282;
+        }
     }
 }

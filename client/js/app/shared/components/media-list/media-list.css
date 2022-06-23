@@ -1,8 +1,6 @@
 .media-list {
   margin: 0 auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 90vw;
   font-family: 'Inter';
   font-weight: 700;
 }
@@ -19,11 +17,8 @@
       grid-template-columns: repeat(2, 1fr);
   -ms-grid-rows: (1fr)[auto];
       grid-template-rows: repeat(auto, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  grid-gap: 4vw;
+  width: 100%;
 }
 
 .media-list__cards::-webkit-scrollbar {
