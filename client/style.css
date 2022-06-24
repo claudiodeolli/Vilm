@@ -18,9 +18,11 @@ router-outlet {
     font-size: 22px;
   }
 }
+
 @media (min-width: 1600px) {
   body {
     width: 1200px;
     margin: 0 auto;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */

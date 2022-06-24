@@ -2,55 +2,57 @@
   width: 90vw;
   padding: 15vw 0;
   margin-left: 1rem;
-  color: white;
-  font-family: "Inter";
+  color: #FFFF;
+  font-family: 'Inter';
   font-style: normal;
 }
+
 .copyright__title {
   font-size: 8vw;
 }
+
 .copyright__title__logo {
   font-weight: 700;
 }
+
 .copyright__title__year {
   font-weight: 300;
 }
+
 .copyright__api {
   font-size: 5vw;
 }
+
 .copyright__api a {
-  color: white;
+  color: #FFFF;
 }
 
 @media (min-width: 1200px) {
   .copyright__title {
     font-size: 2rem;
   }
-
   .copyright__api {
     font-size: 1.1rem;
   }
-
   .copyright {
     padding: 5rem 0;
   }
 }
+
 @media (min-width: 1600px) {
   .copyright {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
-
   .copyright__title {
     font-size: 1.5rem;
   }
-
   .copyright__api {
-    font-size: 0.8rem;
+    font-size: .8rem;
   }
-
   .copyright {
     padding: 5rem 0;
   }
-}/*# sourceMappingURL=copyright-footer.css.map */
+}
+/*# sourceMappingURL=copyright-footer.css.map */

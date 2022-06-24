@@ -28,30 +28,29 @@
                 font-family: 'Inter';
                 font-style: normal;
                 font-weight: 600;
-                font-size: 17px;
-                line-height: 17px;
+                font-size: 5vw;
 
                 color: #EDEDED;
             }
             &__poster{
     
-                width: 7rem;
-                height: 10rem;
+                width: 30vw;
+                height: 42vw;
             }
             &__rating{
 
                 font-family: 'Roboto';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 14px;
+                font-size: 5vw;
                 line-height: 11px;
 
                 color: #FFFFFF;
 
                 &__icon{
 
-                    height: 11px;
-                    width: 11px;
+                    height: 4vw;
+                    width: 4vw;
                 }
             }
         }
@@ -60,7 +59,6 @@
             font-family: 'Roboto';
             font-style: normal;
             font-size: 14px;
-            line-height: 16px;
 
             color: #FFFFFF;
 
@@ -68,8 +66,74 @@
     
             &__title{
                 
+                font-size: 4vw;
                 font-weight: 700;
                 margin: .3rem 0;
+            }
+
+            &__text{
+
+                font-size: 3.5vw;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px)
+{
+
+    .details-page__info{
+
+        &__overview{
+
+            margin: 3rem 0;
+        }
+    }
+}
+
+
+@media (min-width: 1600px)
+{
+
+    .details-page__info{
+
+        &__overview{
+
+            font-size: 1rem;
+
+            &__title{
+
+                font-size: 2rem;
+            }
+
+            &__text{
+
+                font-size: 2rem;
+            }
+        }
+
+        &__card{
+
+            &__poster{
+    
+                width: 14rem;
+                height: 20rem;
+            }
+    
+            &__title{
+    
+                font-size: 1.5rem;
+            }
+    
+            &__rating{
+    
+                font-size: 1.5rem;
+    
+                &__icon{
+    
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
     }

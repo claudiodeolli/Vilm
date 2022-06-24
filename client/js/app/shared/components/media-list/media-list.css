@@ -1,34 +1,42 @@
 .media-list {
   margin: 0 auto;
   width: 90vw;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-weight: 700;
 }
+
 .media-list__title {
   margin-top: 2rem;
   font-size: 1.1rem;
   color: #A2ACA6;
 }
+
 .media-list__cards {
+  display: -ms-grid;
   display: grid;
   overflow: hidden;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto, 1fr);
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[auto];
+      grid-template-rows: repeat(auto, 1fr);
   grid-gap: 6vw;
 }
+
 .media-list__cards::-webkit-scrollbar {
   display: none;
 }
 
 @media (min-width: 1200px) {
   .media-list__cards {
-    grid-template-columns: repeat(4, 1fr);
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
   }
 }
+
 @media (min-width: 1600px) {
   .media-list {
     width: -webkit-fit-content;
@@ -39,4 +47,5 @@
   .media-list__cards {
     grid-gap: 1rem;
   }
-}/*# sourceMappingURL=media-list.css.map */
+}
+/*# sourceMappingURL=media-list.css.map */

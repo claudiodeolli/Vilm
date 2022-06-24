@@ -1,6 +1,9 @@
 .mediaSelect__medias {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .mediaSelect__medias button {
   width: 50%;
   background-color: #050E12;
@@ -8,7 +11,7 @@
   border: 0;
   border-bottom: 3px solid #1A1F38;
   font-size: 1rem;
-  padding: 0.5rem 0;
+  padding: .5rem 0;
   text-transform: uppercase;
 }
 
@@ -16,8 +19,9 @@
   margin: 0 auto;
   width: 90vw;
 }
+
 .search-page__title {
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 1.1rem;
@@ -28,43 +32,54 @@
   width: fit-content;
   margin-top: 1rem;
 }
+
 .search-page__results {
+  display: -ms-grid;
   display: grid;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto, 1fr);
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[auto];
+      grid-template-rows: repeat(auto, 1fr);
   grid-gap: 6vw;
 }
+
 .search-page__pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 3rem 0;
 }
+
 .search-page__pages button {
   margin: 0 0.2rem;
   background-color: #1A1F38;
   border: 0;
-  padding: 0.3rem 0.6rem;
-  color: white;
+  padding: .3rem .6rem;
+  color: #FFFF;
   border-radius: 3px;
-  font-family: "Inter";
+  font-family: 'Inter';
 }
+
 .search-page__pages button:disabled {
-  background-color: rgba(26, 31, 56, 0.2705882353);
-  color: rgba(255, 255, 255, 0.2705882353);
+  background-color: #1a1f3845;
+  color: #FFFFFF45;
 }
 
 .current {
   background-color: #040b0e !important;
-  border: 1px solid white !important;
+  border: 1px solid #FFFF !important;
 }
 
 .selected {
-  color: white !important;
-  border-color: white !important;
+  color: #FFFF !important;
+  border-color: #FFFF !important;
   font-weight: bold;
 }
 
@@ -75,14 +90,17 @@
     width: fit-content;
   }
   .search-page__results {
-    grid-template-columns: repeat(4, 1fr);
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
     grid-gap: 1.5rem;
   }
 }
+
 @media (min-width: 1600px) {
   .search-page__results {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
-}/*# sourceMappingURL=search-page.css.map */
+}
+/*# sourceMappingURL=search-page.css.map */

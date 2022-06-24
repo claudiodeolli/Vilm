@@ -23,41 +23,76 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 17px;
-  line-height: 17px;
+  font-size: 5vw;
   color: #EDEDED;
 }
 
 .details-page__info__card__poster {
-  width: 7rem;
-  height: 10rem;
+  width: 30vw;
+  height: 42vw;
 }
 
 .details-page__info__card__rating {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 5vw;
   line-height: 11px;
   color: #FFFFFF;
 }
 
 .details-page__info__card__rating__icon {
-  height: 11px;
-  width: 11px;
+  height: 4vw;
+  width: 4vw;
 }
 
 .details-page__info__overview {
   font-family: 'Roboto';
   font-style: normal;
   font-size: 14px;
-  line-height: 16px;
   color: #FFFFFF;
   margin: 1rem 0;
 }
 
 .details-page__info__overview__title {
+  font-size: 4vw;
   font-weight: 700;
   margin: .3rem 0;
+}
+
+.details-page__info__overview__text {
+  font-size: 3.5vw;
+}
+
+@media (min-width: 1200px) {
+  .details-page__info__overview {
+    margin: 3rem 0;
+  }
+}
+
+@media (min-width: 1600px) {
+  .details-page__info__overview {
+    font-size: 1rem;
+  }
+  .details-page__info__overview__title {
+    font-size: 2rem;
+  }
+  .details-page__info__overview__text {
+    font-size: 2rem;
+  }
+  .details-page__info__card__poster {
+    width: 14rem;
+    height: 20rem;
+  }
+  .details-page__info__card__title {
+    font-size: 1.5rem;
+  }
+  .details-page__info__card__rating {
+    font-size: 1.5rem;
+  }
+  .details-page__info__card__rating__icon {
+    width: 25px;
+    height: 25px;
+  }
 }
 /*# sourceMappingURL=details-page.css.map */
