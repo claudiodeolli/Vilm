@@ -1,6 +1,8 @@
-import FormatUrlImage from "../../helpers/FormatUrlImage.js";
-import LoadPage from "../../services/LoadPage.js";
-import { getMediaById } from "../../services/tmdb.js";
+
+import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
+import LoadPage from "../../../services/LoadPage.js";
+import { getMediaById } from "../../../services/tmdb.js";
+
 
 export default class DetailsPage extends HTMLElement{
 
@@ -30,7 +32,7 @@ export default class DetailsPage extends HTMLElement{
 
     async #style(){
 
-        const style = await LoadPage.get('js/app/pages/details-page/details-page.css');
+        const style = await LoadPage.get('js/app/views/pages/details-page/details-page.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;

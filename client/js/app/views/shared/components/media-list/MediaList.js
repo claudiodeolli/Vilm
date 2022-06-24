@@ -1,7 +1,8 @@
-import MediaListController from "../../../controllers/MediaListController.js";
-import ConvertDate from "../../../helpers/ConvertDate.js";
-import LoadPage from "../../../services/LoadPage.js";
-import { getTrendingMedia } from "../../../services/tmdb.js";
+
+import MediaListController from "../../../../controllers/MediaListController.js";
+import ConvertDate from "../../../../helpers/ConvertDate.js";
+import LoadPage from "../../../../services/LoadPage.js";
+import { getTrendingMedia } from "../../../../services/tmdb.js";
 import MediaCard from "../media-card/MediaCard.js";
 
 export default class MediaList extends HTMLElement{
@@ -33,7 +34,7 @@ export default class MediaList extends HTMLElement{
 
     async #style(){
 
-        const style = await LoadPage.get('js/app/shared/components/media-list/media-list.css');
+        const style = await LoadPage.get('js/app/views/shared/components/media-list/media-list.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;

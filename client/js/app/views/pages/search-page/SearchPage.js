@@ -1,8 +1,10 @@
-import MediaListController from "../../controllers/MediaListController.js";
-import LoadPage from "../../services/LoadPage.js";
-import { searchMedia } from "../../services/tmdb.js";
-import ConvertDate from "../../helpers/ConvertDate.js";
+
+
+import ConvertDate from "../../../helpers/ConvertDate.js";
 import MediaCard from "../../shared/components/media-card/MediaCard.js";
+import { searchMedia } from "../../../services/tmdb.js";
+import MediaListController from "../../../controllers/MediaListController.js";
+import LoadPage from "../../../services/LoadPage.js";
 
 export default class SearchPage extends HTMLElement{
 
@@ -28,7 +30,7 @@ export default class SearchPage extends HTMLElement{
 
     async #style(){
 
-        const style = await LoadPage.get('js/app/pages/search-page/search-page.css');
+        const style = await LoadPage.get('js/app/views/pages/search-page/search-page.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;

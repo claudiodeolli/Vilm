@@ -1,4 +1,4 @@
-import LoadPage from "../../../services/LoadPage.js";
+import LoadPage from "../../../../services/LoadPage.js";
 
 export default class CopyrightFooter extends HTMLElement{
 
@@ -20,7 +20,7 @@ export default class CopyrightFooter extends HTMLElement{
 
     async #style(){
 
-        const style = await LoadPage.get('js/app/shared/components/copyright-footer/copyright-footer.css');
+        const style = await LoadPage.get('js/app/views/shared/components/copyright-footer/copyright-footer.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;

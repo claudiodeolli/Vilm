@@ -1,6 +1,7 @@
-import LoadPage from "../../../services/LoadPage.js";
+
+import Routes from "../../../../routes.js";
+import LoadPage from "../../../../services/LoadPage.js";
 import SearchPage from "../../../pages/search-page/SearchPage.js";
-import Routes from "../../../Routes.js";
 
 export default class NavBar extends HTMLElement{
 
@@ -61,7 +62,7 @@ export default class NavBar extends HTMLElement{
      
     async #style(){
 
-        const style = await LoadPage.get('js/app/shared/components/nav-bar/nav-bar.css');
+        const style = await LoadPage.get('js/app/views/shared/components/nav-bar/nav-bar.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;

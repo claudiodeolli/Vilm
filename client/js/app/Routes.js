@@ -1,5 +1,5 @@
-import MainPage from "./pages/main-page/main-page.js";
-import DetailsPage from "./pages/details-page/DetailsPage.js";
+import MainPage from "./views/pages/main-page/main-page.js";
+import DetailsPage from "./views/pages/details-page/DetailsPage.js";
 
 export default class Routes{
 

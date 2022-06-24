@@ -1,7 +1,9 @@
-import TopTrendingMidiaController from "../../../controllers/TopTrendingMidiaController.js";
-import FormatUrlImage from "../../../helpers/FormatUrlImage.js";
-import Routes from "../../../routes.js";
-import LoadPage from "../../../services/LoadPage.js";
+
+import TopTrendingMidiaController from "../../../../controllers/TopTrendingMidiaController.js";
+import FormatUrlImage from "../../../../helpers/FormatUrlImage.js";
+import Routes from "../../../../routes.js";
+import LoadPage from "../../../../services/LoadPage.js";
+
 
 export default class TopTrendingMidia extends HTMLElement{
 
@@ -56,7 +58,7 @@ export default class TopTrendingMidia extends HTMLElement{
 
     async #style(){
 
-        const style = await LoadPage.get('js/app/shared/components/top-trending-media/top-trending-media.css');
+        const style = await LoadPage.get('js/app/views/shared/components/top-trending-media/top-trending-media.css');
         const styleElement = document.createElement('style');
 
         styleElement.textContent = style;
