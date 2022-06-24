@@ -1,14 +1,24 @@
-.search-page{
-
-    display: grid;
-    justify-content: center;
+.mediaSelect{
 
     &__medias{
         display: flex;
         button{
             width: 50%;
+            background-color: #050E12;
+            color: #1A1F38;
+            border: 0;
+            border-bottom: 3px solid #1A1F38;
+            font-size: 1rem;
+            padding: .5rem 0;
+            text-transform: uppercase;
         }
     }
+}
+
+.search-page{
+
+    margin: 0 auto;
+    width: 90vw;
     &__title{
 
         font-family: 'Inter';
@@ -26,22 +36,46 @@
     &__results{
 
         display: grid;
-        grid-template-columns: repeat(2, min-content);
-        grid-column-gap: 10px;
-        grid-row-gap: 10px;
-        grid-auto-flow: row dense;
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(auto, 1fr);
+        grid-gap: 6vw;
+        width: 100%;
     }
 
     &__pages{
 
         display: flex;
         justify-content: center;
-        margin: 1rem 0;
+        margin: 3rem 0;
 
         button{
 
-            margin: 0 .2rem;
+            margin: 0 0.2rem;
+            background-color: #1A1F38;
+            border: 0;
+            padding: .3rem .6rem;
+            color: #FFFF;
+            border-radius: 3px;
+            font-family: 'Inter';
+        }
+
+        button:disabled{
+
+            background-color: #1a1f3845;
+            color: #FFFFFF45;
         }
     }
+}
+
+.current{
+
+    background-color: #040b0e !important;
+    border: 1px solid #FFFF !important;
+}
+
+.selected{
+
+    color: #FFFF !important;
+    border-color: #FFFF !important;
+    font-weight: bold;
 }

@@ -1,23 +1,23 @@
-.search-page {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.search-page__medias {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.mediaSelect__medias {
   display: flex;
 }
-
-.search-page__medias button {
+.mediaSelect__medias button {
   width: 50%;
+  background-color: #050E12;
+  color: #1A1F38;
+  border: 0;
+  border-bottom: 3px solid #1A1F38;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
 }
 
+.search-page {
+  margin: 0 auto;
+  width: 90vw;
+}
 .search-page__title {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 1.1rem;
@@ -28,32 +28,39 @@
   width: fit-content;
   margin-top: 1rem;
 }
-
 .search-page__results {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (min-content)[2];
-      grid-template-columns: repeat(2, -webkit-min-content);
-      grid-template-columns: repeat(2, min-content);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  grid-auto-flow: row dense;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: 6vw;
+  width: 100%;
 }
-
 .search-page__pages {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 1rem 0;
+  justify-content: center;
+  margin: 3rem 0;
+}
+.search-page__pages button {
+  margin: 0 0.2rem;
+  background-color: #1A1F38;
+  border: 0;
+  padding: 0.3rem 0.6rem;
+  color: white;
+  border-radius: 3px;
+  font-family: "Inter";
+}
+.search-page__pages button:disabled {
+  background-color: rgba(26, 31, 56, 0.2705882353);
+  color: rgba(255, 255, 255, 0.2705882353);
 }
 
-.search-page__pages button {
-  margin: 0 .2rem;
+.current {
+  background-color: #040b0e !important;
+  border: 1px solid white !important;
 }
-/*# sourceMappingURL=search-page.css.map */
+
+.selected {
+  color: white !important;
+  border-color: white !important;
+  font-weight: bold;
+}/*# sourceMappingURL=search-page.css.map */

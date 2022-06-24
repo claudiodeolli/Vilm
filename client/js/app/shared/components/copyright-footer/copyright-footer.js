@@ -7,7 +7,7 @@ export default class CopyrightFooter extends HTMLElement{
     constructor(){
 
         super();
-        this.#render();   
+        this.#render();
     };
 
     #render(){
@@ -42,7 +42,7 @@ export default class CopyrightFooter extends HTMLElement{
                 </div>
                 <span class="copyright__api">
                     <span class="copyright__api__description">powered by</span>
-                    <span class="copyright__api__name">tmdb</span>
+                    <a class="copyright__api__name" href="https://www.themoviedb.org/" target="_blank">tmdb</a>
                 </span>
             </div>
         `;

@@ -1,36 +1,28 @@
 .media-card {
   width: 100%;
-  height: 80vw;
+  height: 100%;
 }
-
 .media-card__cover {
   width: inherit;
-  background: red;
+  height: 80%;
+  background: #040b0e;
   border-radius: 1vw;
 }
-
 .media-card__text {
-  height: 14vw;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
-  display: -ms-grid;
+  height: 20%;
+  align-items: end;
   display: grid;
 }
-
 .media-card__text h2, .media-card__text h3 {
   margin: 0;
 }
-
 .media-card__text__name {
   font-size: 3.5vw;
   font-weight: 700;
   color: #B6B6B6;
 }
-
 .media-card__text__release-year {
   font-weight: 400;
   font-size: 3.3vw;
   color: #828282;
-}
-/*# sourceMappingURL=media-card.css.map */
+}/*# sourceMappingURL=media-card.css.map */

@@ -22,7 +22,8 @@ export default class SearchPage extends HTMLElement{
       
         this.#shadow = this.attachShadow({mode:'open'});
         await this.#style();
-        await this.#html();        
+        await this.#renderMediaSelectHtml();
+        this.#html();        
     };
 
     async #style(){
@@ -35,6 +36,20 @@ export default class SearchPage extends HTMLElement{
         this.#shadow.appendChild(styleElement);
     };
 
+    async #renderMediaSelectHtml(){
+
+        const html = document.createElement('div');
+        html.classList.add('mediaSelect');
+        html.innerHTML = `
+            <div class="mediaSelect__medias">
+                <button class="mediaSelect__medias__tv selected" data-media="tv" type="button">Tv</button>
+                <button class="mediaSelect__medias__movie" data-media="movie" type="button">Movie</button>
+            </div>
+        `;
+
+        this.#shadow.appendChild(html);
+    };
+
     async #html(){
 
         const html = document.createElement('div');
@@ -44,10 +59,6 @@ export default class SearchPage extends HTMLElement{
 
         html.classList.add('search-page');
         html.innerHTML = `
-            <div class="search-page__medias">
-                <button class="search-page__medias__tv" data-media="tv" type="button">Tv</button>
-                <button class="search-page__medias__movie" data-media="movie" type="button">Movie</button>
-            </div>
             <h2 class="search-page__title">Results</h2>
             <div class="search-page__results">
 
@@ -122,11 +133,14 @@ export default class SearchPage extends HTMLElement{
 
     async #selectMediaQuery(){
 
-        const navigationButtons = this.#shadow.querySelectorAll('.search-page__medias button');
+        const navigationButtons = this.#shadow.querySelectorAll('.mediaSelect__medias button');
         navigationButtons.forEach(button => {
 
             button.addEventListener('click', () => {
 
+                navigationButtons.forEach(button => {
+                    button.classList.remove('selected');
+                });
                 button.classList.add('selected');
                 this.#mediaType = button.getAttribute("data-media");
                 this.#page = 1;

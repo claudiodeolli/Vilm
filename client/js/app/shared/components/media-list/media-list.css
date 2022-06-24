@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 4vw;
+  grid-gap: 6vw;
   width: 100%;
 }
 .media-list__cards::-webkit-scrollbar {

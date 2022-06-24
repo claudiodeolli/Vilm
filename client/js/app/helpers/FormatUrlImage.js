@@ -6,7 +6,7 @@ export default class FormatUrlImage{
             throw new TypeError("It is not possible to adjust the image to this size, the available sizes are 200, 300, 400 or 500");
 
         if(imgUrl == 'null')
-            return '../../../assets/not-found.png';
+            return '../../../assets/not-found.webp';
 
         return `https://image.tmdb.org/t/p/w${size}${imgUrl}`;
     };

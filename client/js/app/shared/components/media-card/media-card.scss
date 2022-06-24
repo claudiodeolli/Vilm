@@ -1,17 +1,18 @@
 .media-card{
 
     width: 100%;
-    height: 80vw;
+    height: 100%;
     &__cover{
 
         width: inherit;
-        background: red;
+        height: 80%;
+        background: #040b0e;
         border-radius: 1vw;
     }
 
     &__text{
 
-        height: 14vw;
+        height: 20%;
         align-items: end;
         display: grid;
 
