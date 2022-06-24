@@ -171,6 +171,7 @@ export default class SearchPage extends HTMLElement{
         const itsOnTheLastPage = paginationButtons.current.innerHTML == paginationButtons.total.innerHTML;
         const itsOnThePenultimatePage = paginationButtons.afterCurrent.innerHTML == paginationButtons.total.innerHTML;
         const isOnTheAntepenultimatePage = paginationButtons.total.innerHTML == paginationButtons.nextOfAfterCurrent.innerHTML;
+        const noMediaFound = paginationButtons.total.innerHTML == 0;
 
         if(itsOnTheFirstPage){
 
@@ -194,6 +195,13 @@ export default class SearchPage extends HTMLElement{
 
             paginationButtons.total.remove();
         };
+        if(noMediaFound){
+
+            paginationButtons.next.disabled = true;
+            paginationButtons.afterCurrent.remove();
+            paginationButtons.nextOfAfterCurrent.remove();
+            paginationButtons.total.remove();
+        }
     };
 
 };
