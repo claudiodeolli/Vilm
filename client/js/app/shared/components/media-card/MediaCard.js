@@ -63,7 +63,7 @@ export default class MediaCard extends HTMLElement{
         html.classList.add('media-card');
         html.innerHTML = `
         
-            <img src="${imgCoverSrc}" class="media-card__cover" alt="Media Cover">
+            <img src="${imgCoverSrc}" class="media-card__cover skeleton" alt="Media Cover">
             <div class="media-card__text">
                 <h2 class="media-card__text__name">${mediaName}</h2>
                 <h3 class="media-card__text__release-year">${mediaReleaseYear}</h3>

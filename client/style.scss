@@ -12,3 +12,18 @@ router-outlet{
     width: 80%;
     margin: 0 auto;
 }
+
+@media (min-width: 1200px)
+{
+    html {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1600px)
+{
+    body{
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
