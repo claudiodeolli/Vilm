@@ -1,7 +1,7 @@
 .copyright {
   width: 90vw;
-  margin: 0 auto;
   padding: 15vw 0;
+  margin-left: 1rem;
   color: white;
   font-family: "Inter";
   font-style: normal;
@@ -20,4 +20,37 @@
 }
 .copyright__api a {
   color: white;
+}
+
+@media (min-width: 1200px) {
+  .copyright__title {
+    font-size: 2rem;
+  }
+
+  .copyright__api {
+    font-size: 1.1rem;
+  }
+
+  .copyright {
+    padding: 5rem 0;
+  }
+}
+@media (min-width: 1600px) {
+  .copyright {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .copyright__title {
+    font-size: 1.5rem;
+  }
+
+  .copyright__api {
+    font-size: 0.8rem;
+  }
+
+  .copyright {
+    padding: 5rem 0;
+  }
 }/*# sourceMappingURL=copyright-footer.css.map */

@@ -30,10 +30,13 @@
 }
 .search-page__results {
   display: grid;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 6vw;
-  width: 100%;
 }
 .search-page__pages {
   display: flex;
@@ -63,4 +66,23 @@
   color: white !important;
   border-color: white !important;
   font-weight: bold;
+}
+
+@media (min-width: 1200px) {
+  .search-page {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .search-page__results {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.5rem;
+  }
+}
+@media (min-width: 1600px) {
+  .search-page__results {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
 }/*# sourceMappingURL=search-page.css.map */

@@ -36,10 +36,11 @@
     &__results{
 
         display: grid;
+        width: fit-content;
+        margin: 0 auto;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(auto, 1fr);
         grid-gap: 6vw;
-        width: 100%;
     }
 
     &__pages{
@@ -78,4 +79,24 @@
     color: #FFFF !important;
     border-color: #FFFF !important;
     font-weight: bold;
+}
+
+@media (min-width: 1200px)
+{
+    .search-page{
+
+        width: fit-content;
+        &__results{
+
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1.5rem;
+        }
+    }
+}
+
+@media (min-width: 1600px)
+{
+    .search-page__results{
+        width: fit-content;
+    }
 }
