@@ -1,5 +1,5 @@
 
-import Routes from "../../../../routes.js";
+import Routes from "../../../../Routes.js";
 import LoadPage from "../../../../services/LoadPage.js";
 import SearchPage from "../../../pages/search-page/SearchPage.js";
 

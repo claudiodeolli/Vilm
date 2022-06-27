@@ -2,7 +2,7 @@
 
 import DetailsPage from "../../../pages/details-page/DetailsPage.js";
 import FormatUrlImage from "../../../../helpers/FormatUrlImage.js";
-import Routes from "../../../../routes.js";
+import Routes from "../../../../Routes.js";
 import LoadPage from "../../../../services/LoadPage.js";
 
 export default class MediaCard extends HTMLElement{
