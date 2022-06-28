@@ -12,40 +12,129 @@
 }
 
 .media-list__cards {
-  display: -ms-grid;
-  display: grid;
   overflow: hidden;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: (1fr)[auto];
-      grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+}
+
+.media-list__cards > media-card {
+  width: 40vw;
 }
 
 .media-list__cards::-webkit-scrollbar {
   display: none;
 }
 
+.card-skeleton {
+  display: unset;
+}
+
+.card-skeleton__card {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.card-skeleton__card__poster {
+  width: 40vw;
+  height: 60vw;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 1vw;
+}
+
+.card-skeleton__card__text {
+  height: 14vw;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  display: -ms-grid;
+  display: grid;
+}
+
+.card-skeleton__card__text__title {
+  height: 3vw;
+  width: 100%;
+  border-radius: .8vw;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.card-skeleton__card__text__year {
+  height: 3vw;
+  width: 25%;
+  border-radius: .8vw;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@-webkit-keyframes skeleton-loading {
+  0% {
+    background-color: #0a1b1f;
+  }
+  100% {
+    background-color: #061113;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: #0a1b1f;
+  }
+  100% {
+    background-color: #061113;
+  }
+}
+
 @media (min-width: 1200px) {
-  .media-list__cards {
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
+  .card-skeleton__card {
+    width: 20vw;
+  }
+  .card-skeleton__card__poster {
+    width: 100%;
+    height: 32vw;
+  }
+  .card-skeleton__card__text {
+    height: 5.4vw;
+  }
+  .card-skeleton__card__text__title {
+    height: 2vw;
+    border-radius: .3vw;
+  }
+  .card-skeleton__card__text__year {
+    height: 1.3vw;
+    width: 3.5vw;
+    border-radius: .3vw;
   }
 }
 
 @media (min-width: 1600px) {
   .media-list {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: 0 auto;
+    width: 100%;
   }
-  .media-list__cards {
-    grid-gap: 1rem;
+  .card-skeleton__card {
+    width: 12.5rem;
+  }
+  .card-skeleton__card__poster {
+    width: 100%;
+    height: 18rem;
+    border-radius: .5rem;
+  }
+  .card-skeleton__card__text {
+    height: 4.3rem;
+  }
+  .card-skeleton__card__text__title {
+    height: 1vw;
+    border-radius: .3vw;
+  }
+  .card-skeleton__card__text__year {
+    height: .8vw;
+    width: 2.5vw;
+    border-radius: .3vw;
   }
 }
 /*# sourceMappingURL=media-list.css.map */

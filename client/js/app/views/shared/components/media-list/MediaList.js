@@ -7,28 +7,36 @@ import MediaCard from "../media-card/MediaCard.js";
 
 export default class MediaList extends HTMLElement{
 
-    #shadow;
     #mediaListController;
+    #theCardsAreBeingLoaded;
 
     constructor(){
         super();
         this.#render();
     };
 
-    #render(){
+    async #render(){
 
-        this.#shadow = this.attachShadow({mode : 'open'});
+        const {list} = await this.#loadList();
+        const style = await this.#style();
+        const html = await this.#html(list);
+        const shadow = this.attachShadow({mode : 'open'});
 
-        this.#style();
-        this.#html();
+        shadow.appendChild(style);
+        shadow.appendChild(html);
+
+        this.#theCardsAreBeingLoaded = setInterval(()=>{
+            this.#cardsLoading();
+        },500);
     };
 
     async #loadList(){
 
-        let request = this.#shadow.host.getAttribute("data-search");
+        let request = this.getAttribute("data-search");
         const {results} = await getTrendingMedia(request);
         
         this.#mediaListController = new MediaListController();
+        
         return await this.#mediaListController.createMediaList(results);
     };
 
@@ -39,13 +47,12 @@ export default class MediaList extends HTMLElement{
 
         styleElement.textContent = style;
 
-        this.#shadow.appendChild(styleElement);
+       return styleElement;
     };
 
-    async #html(){
+    async #html(list){
 
-        let listTitle = this.#shadow.host.getAttribute("data-title");
-        let {list} = await this.#loadList();
+        let listTitle = this.getAttribute("data-title");
         let html = document.createElement('div');
 
         html.classList.add('media-list');
@@ -55,9 +62,23 @@ export default class MediaList extends HTMLElement{
             <h2 class="media-list__title">${listTitle}</h2>
             <div class="media-list__cards">
 
-                ${list.slice(0, 4).map(({poster_path, title, first_air_date, id, media_type}) => `    
+                ${list.slice(0, 4).map(({poster_path, title, first_air_date, id, media_type}) => `
 
-                    <media-card data-poster="${poster_path}" 
+                    <div class="card-skeleton">
+
+                        <div class="card-skeleton__card">
+
+                            <div class="card-skeleton__card__poster"></div>
+                            <div class="card-skeleton__card__text">
+                                <span class="card-skeleton__card__text__title"></span>
+                                <span class="card-skeleton__card__text__year"></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <media-card style="display: none"
+                                data-poster="${poster_path}" 
                                 data-name="${title}" 
                                 data-year="${ConvertDate.fullDateForYearOnly(first_air_date)}"
                                 data-id="${id}"
@@ -67,7 +88,40 @@ export default class MediaList extends HTMLElement{
             </div>
         `;
 
-        this.#shadow.appendChild(html);
+        return html;
+    };
+
+    #cardsLoading(){
+
+        const cards = Array.from(this.shadowRoot.querySelectorAll('media-card'));
+        
+        let loadedCards = cards.map(card => {
+
+            const cardIsLoaded = card.shadowRoot;
+            
+            if(cardIsLoaded){
+                
+                card.style.display = "block"
+                if(card.previousElementSibling){
+
+                    if(card.previousElementSibling.classList.contains('card-skeleton')){
+                        card.previousElementSibling.remove();      
+                    }
+                }
+            }
+
+            return card.shadowRoot
+        });
+
+        if(this.#allCardsHaveBeenLoaded(loadedCards)){
+
+            clearInterval(this.#theCardsAreBeingLoaded);
+        };
+    };
+
+    #allCardsHaveBeenLoaded(loadedCards){
+
+        return loadedCards.every(card => card);
     };
 };
 
